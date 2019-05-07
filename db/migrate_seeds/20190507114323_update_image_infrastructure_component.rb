@@ -2,6 +2,7 @@ class UpdateImageInfrastructureComponent < ActiveRecord::Migration[5.2]
   def up
     infrastructure_components = InfrastructureComponent.all
     infrastructure_components.each do |ic|
+      next unless ic.image.nil?
       ic.update(image: "18.04")
     end
   end
